@@ -1,4 +1,4 @@
-# First challenge
+## First challenge
 
 <code>docker run neves01/hello-go</code>
 
