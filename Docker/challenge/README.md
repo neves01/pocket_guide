@@ -4,6 +4,4 @@
 
 ## Second challenge
 
-<pre><code>cd /
-docker-compose up -d
-</code></pre>
+<code>docker-compose up -d</code>
