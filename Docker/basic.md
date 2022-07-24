@@ -28,3 +28,7 @@ Based on command below:
 <code>docker run -dit --name Ubuntu --network mynetworking bash</code>
 
 bash will replace the entire CMD command.
+
+## Remove all Images and Containers
+
+<code>docker rm -f $(docker ps -qa) && docker rmi -f $(docker images -aq)</code>
