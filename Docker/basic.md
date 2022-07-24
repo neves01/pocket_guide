@@ -29,6 +29,6 @@ Based on command below:
 
 bash will replace the entire CMD command.
 
-## Remove all Images and Containers
+## Remove all Images, Containers and Volumes
 
-<code>docker rm -f $(docker ps -qa) && docker rmi -f $(docker images -aq)</code>
+<code>docker rm -f $(docker ps -qa) && docker rmi -f $(docker images -aq) && docker volume prune</code>
