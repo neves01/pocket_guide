@@ -4,10 +4,10 @@
 
 <pre><code>FROM: ImageName
 
-RUN: 	apt-get update && \
+RUN 	apt-get update && \
 	apt-get install vim
 
-EXPOSE: 8000
+EXPOSE 8000
 </code></pre>
 
 ## Entry Point vs CMD
