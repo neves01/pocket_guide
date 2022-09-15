@@ -35,7 +35,7 @@ bash will replace the entire CMD command.
 
 ## Back up PostgreSQL inside docker container
 
-docker exec <postgresql_container> /bin/bash -c "/usr/bin/pg_dump -U <postgresql_user> <postgresql_database>"
+<code>docker exec <postgresql_container> /bin/bash -c "/usr/bin/pg_dump -U <postgresql_user> <postgresql_database>"</code>
 
 ## Back up all Docker PostgreSQL databases
 
