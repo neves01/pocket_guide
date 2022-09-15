@@ -33,6 +33,14 @@ bash will replace the entire CMD command.
 
 <code>docker rm -f $(docker ps -qa) && docker rmi -f $(docker images -aq) && docker volume prune</code>
 
+## Back up PostgreSQL inside docker container
+
+docker exec <postgresql_container> /bin/bash -c "/usr/bin/pg_dump -U <postgresql_user> <postgresql_database>"
+
 ## Back up all Docker PostgreSQL databases
 
-<code>docker exec -i postgres /usr/bin/pg_dumpall -U <postgresql_user> > postgres-backup.sql</code>
+<code>docker exec -i <container_name> /usr/bin/pg_dumpall -U <postgresql_user> > postgres-backup.sql</code>
+
+## Postgres Restore Database Command on Docker
+
+<code>docker exec <container_name> pg_restore -U <postgresql_user> -d <database_name> /backups/postgres-backup.sql </code>
