@@ -35,5 +35,4 @@ bash will replace the entire CMD command.
 
 ## Back up all Docker PostgreSQL databases
 
-docker exec -i postgres /usr/bin/pg_dumpall \
- -U <postgresql_user> > postgres-backup.sql
+<code>docker exec -i postgres /usr/bin/pg_dumpall -U <postgresql_user> > postgres-backup.sql</code>
