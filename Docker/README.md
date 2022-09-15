@@ -32,3 +32,8 @@ bash will replace the entire CMD command.
 ## Remove all Images, Containers and Volumes
 
 <code>docker rm -f $(docker ps -qa) && docker rmi -f $(docker images -aq) && docker volume prune</code>
+
+## Back up all Docker PostgreSQL databases
+
+docker exec -i postgres /usr/bin/pg_dumpall \
+ -U <postgresql_user> > postgres-backup.sql
