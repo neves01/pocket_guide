@@ -1,0 +1,65 @@
+buildscript {
+	ext {
+		springBootVersion = '2.7.4-SNAPSHOT'
+	}
+	repositories {
+		mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+			classpath("com.palantir.gradle.docker:gradle-docker:0.34.0")
+		}
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.7.4'
+	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id 'java'
+	id 'com.palantir.docker' version '0.34.0'
+}
+
+group = 'br.com.henrique'
+version = '0.0.2-SNAPSHOT'
+sourceCompatibility = '17'
+
+bootJar {
+	baseName = 'aws_project02'
+	version = '1.0.0'
+}
+
+task unpack(type: Copy) {
+	dependsOn bootJar
+	from(zipTree(tasks.bootJar.outputs.files.singleFile))
+	into("build/dependency")
+}
+
+docker {
+	name "neves01/${bootJar.baseName}"
+	tags "${bootJar.version}"
+	copySpec.from(tasks.unpack.outputs).into("dependency")
+	buildArgs(['DEPENDENCY': "dependency"])
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	implementation 'com.amazonaws:aws-java-sdk-sqs:1.12.321'
+	implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.321'
+	implementation 'io.github.boostchicken:spring-data-dynamodb:5.2.5'
+	implementation 'org.springframework:spring-jms:5.3.23'
+	implementation 'com.amazonaws:amazon-sqs-java-messaging-lib:1.1.0'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
