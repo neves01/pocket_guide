@@ -4,6 +4,7 @@
 
 - Install AWS CLI
 - Install kubectl
+- Install eksctl
 - Create user, userGroup (full admin permission)
 - Configure key to access by CLI
 - Test it with <code>aws eks list_cluster</code>
@@ -13,3 +14,5 @@
 
 - Create a Cluster from the file cluster.yaml <code>eksctl create cluster -f cluster.yaml</code>
 - Listing pods: <code>kubectl get pods -A</code>
+- Create a Namespace from the file namespace.yaml <code>kubectl apply -f create namespace.yaml</code>
+- Check it using: <code>kubectl get ns</code>
