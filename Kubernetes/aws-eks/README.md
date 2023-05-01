@@ -11,5 +11,5 @@
 
 ## Step 2
 
-- Create a Cluster with file cluster.yaml
-- 
+- Create a Cluster from the file cluster.yaml <code>eksctl create cluster -f cluster.yaml</code>
+- Listing pods: <code>kubectl get pods -A</code>
